@@ -1,26 +1,35 @@
 import React, { useState } from "react";
+import "./Flashcard.css";
 
-const Flashcard = ({ flashcards, currentIndex }) => {
+const Flashcard = ({ question, answer, pinyin, sound, onFlip }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-
-  const currentFlashcard = flashcards[currentIndex];
 
   const handleFlipCard = () => {
     setIsFlipped(!isFlipped);
   };
 
+  const handleSoundClick = (e) => {
+    e.stopPropagation();
+    onFlip();
+  };
+
   return (
-    <div className="flashcard-container">
-      <div
-        className={`flashcard ${isFlipped ? "flipped" : ""}`}
-        onClick={handleFlipCard}
-      >
-        <div className="flashcard-front">
-          <h2>{currentFlashcard.question}</h2>
-        </div>
-        <div className="flashcard-back">
-          <h2>{currentFlashcard.answer}</h2>
-          <h2>{currentFlashcard.pinyin}</h2>
+    <div className="container">
+      <div className="flashcard-container">
+        <div
+          className={`flashcard ${isFlipped ? "flipped" : ""}`}
+          onClick={handleFlipCard}
+        >
+          <figure className="flashcard-front">
+            <h2>{question}</h2>
+          </figure>
+          <figure className="flashcard-back">
+            <button className="soundBtn hidden" onClick={handleSoundClick}>
+              <i className="fas fa-volume-down"></i>
+            </button>
+            <h2>{answer}</h2>
+            <h2>{pinyin}</h2>
+          </figure>
         </div>
       </div>
     </div>
