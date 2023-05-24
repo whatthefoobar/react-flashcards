@@ -44,10 +44,12 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNextCard = () => {
+    //at the end of the array it starts back to the first card
     setCurrentIndex((currentIndex + 1) % flashcards.length);
   };
 
   const handlePrevCard = () => {
+    //at the end of the array it starts back to the last card
     setCurrentIndex((currentIndex - 1 + flashcards.length) % flashcards.length);
   };
 
