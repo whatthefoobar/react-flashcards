@@ -1,5 +1,6 @@
 # react-flashcards
 a react.js refactor of an old vanilla js flashcard app I did for a school project.
+A simple flip flashcard app currently only loading a hardcoded set of questions and answers.
 
 Preview:
 
