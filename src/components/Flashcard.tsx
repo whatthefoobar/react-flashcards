@@ -5,7 +5,6 @@ interface IFlashcardProps {
   question: string;
   answer: string;
   pinyin: string;
-  sound: string;
   onFlip: () => void;
 }
 
@@ -13,7 +12,6 @@ const Flashcard: React.FC<IFlashcardProps> = ({
   question,
   answer,
   pinyin,
-  sound,
   onFlip,
 }: IFlashcardProps) => {
   const [isFlipped, setIsFlipped] = useState<boolean>(false);

@@ -71,7 +71,6 @@ const App = () => {
         question={flashcards[currentIndex].question}
         answer={flashcards[currentIndex].answer}
         pinyin={flashcards[currentIndex].pinyin}
-        sound={flashcards[currentIndex].sound}
         onFlip={handleFlipSound}
       />
       <div className="button-container">
