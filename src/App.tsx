@@ -1,13 +1,21 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Flashcard from "./components/Flashcard";
+
 import a1 from "./assets/sounds/a1.mp3";
 import a2 from "./assets/sounds/a2.mp3";
 import a3 from "./assets/sounds/a3.mp3";
 import a4 from "./assets/sounds/a4.mp3";
 import a5 from "./assets/sounds/a5.mp3";
 
-const flashcards = [
+interface IFlashcard {
+  question: string;
+  answer: string;
+  pinyin: string;
+  sound: string;
+}
+
+const flashcards: IFlashcard[] = [
   {
     question: "what is love? Baby don't hurt me.",
     answer: "爱是什么？宝贝，别伤害我",
@@ -40,20 +48,18 @@ const flashcards = [
   },
 ];
 
-function App() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const App = () => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  const handleNextCard = () => {
-    //at the end of the array it starts back to the first card
+  const handleNextCard = (): void => {
     setCurrentIndex((currentIndex + 1) % flashcards.length);
   };
 
-  const handlePrevCard = () => {
-    //at the end of the array it starts back to the last card
+  const handlePrevCard = (): void => {
     setCurrentIndex((currentIndex - 1 + flashcards.length) % flashcards.length);
   };
 
-  const handleFlipSound = () => {
+  const handleFlipSound = (): void => {
     const audio = new Audio(flashcards[currentIndex].sound);
     audio.play();
   };
@@ -74,6 +80,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, MouseEvent } from "react";
 import "./Flashcard.css";
 
-const Flashcard = ({ question, answer, pinyin, sound, onFlip }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+interface IFlashcardProps {
+  question: string;
+  answer: string;
+  pinyin: string;
+  sound: string;
+  onFlip: () => void;
+}
 
-  const handleFlipCard = () => {
+const Flashcard: React.FC<IFlashcardProps> = ({
+  question,
+  answer,
+  pinyin,
+  sound,
+  onFlip,
+}: IFlashcardProps) => {
+  const [isFlipped, setIsFlipped] = useState<boolean>(false);
+
+  const handleFlipCard = (): void => {
     setIsFlipped(!isFlipped);
   };
 
-  const handleSoundClick = (e) => {
+  const handleSoundClick = (e: MouseEvent<HTMLButtonElement>): void => {
     e.stopPropagation();
     onFlip();
   };
