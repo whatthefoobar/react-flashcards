@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 import "./Flashcard.css";
 
 interface IFlashcardProps {
@@ -21,7 +21,7 @@ const Flashcard: React.FC<IFlashcardProps> = ({
   };
 
   const handleSoundClick = (e: MouseEvent<HTMLButtonElement>): void => {
-    e.stopPropagation();
+    e.stopPropagation(); // makes sure that when we click on sound btn the click won't trigger a card flip from the parent
     onFlip();
   };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Flashcard from "./components/Flashcard";
 
@@ -48,14 +48,16 @@ const flashcards: IFlashcard[] = [
   },
 ];
 
-const App = () => {
+const App: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const handleNextCard = (): void => {
+    //at the end of the array it starts back to the first card
     setCurrentIndex((currentIndex + 1) % flashcards.length);
   };
 
   const handlePrevCard = (): void => {
+    //at the end of the array it starts back to the last card
     setCurrentIndex((currentIndex - 1 + flashcards.length) % flashcards.length);
   };
 
